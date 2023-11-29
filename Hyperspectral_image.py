@@ -63,6 +63,9 @@ def wavelength_to_rgb(wavelength):
     
     return (R/255.0, G/255.0, B/255.0)
 
+def simple_mean(l:list)->float:
+    return sum(l)/len(l)
+
 class SpectralImage():
     def __init__(self: None, bilPath: str, hdrPath: str) -> None:
         self.bil = bilPath
@@ -77,18 +80,19 @@ class SpectralImage():
         if self._bgr_calculated is not None:
             return self._bgr_calculated
 
-        aux_r = self.values[0][:, 150:151]
-        aux_g = self.values[0][:, 80:81]
-        aux_b = self.values[0][:, 36:37]
+        aux_r = np.mean(self.values[0][:, 118:160], axis=1)
+        aux_g = np.mean(self.values[0][:, 54:70], axis=1)
+        aux_b = np.mean(self.values[0][:, 19:45], axis=1)
         for i in range(1, self.values.shape[0]):
-            aux_r = np.concatenate((aux_r, self.values[i][:, 150:151]), axis=1)
-            aux_g = np.concatenate((aux_g, self.values[i][:, 80:81]), axis=1)
-            aux_b = np.concatenate((aux_b, self.values[i][:, 36:37]), axis=1)
-        R = normalize(aux_r)
-        G = normalize(aux_g)
-        B = normalize(aux_b)
-        self._bgr_calculated = np.dstack((R, G, B))
+            aux_r = np.concatenate((aux_r, np.mean(self.values[i][:, 118:150], axis=1)))
+            aux_g = np.concatenate((aux_g, np.mean(self.values[i][:, 54:80], axis=1)))
+            aux_b = np.concatenate((aux_b, np.mean(self.values[i][:, 19:45], axis=1)))
         
+        R = normalize(aux_r).reshape(self.values.shape[:2])
+        G = normalize(aux_g).reshape(self.values.shape[:2])
+        B = normalize(aux_b).reshape(self.values.shape[:2])
+        RGB = np.dstack((R, G, B))
+        self._bgr_calculated = np.transpose(RGB, (1, 0, 2))
         return self._bgr_calculated
 
     def applyMask(self):pass
