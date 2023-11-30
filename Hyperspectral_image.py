@@ -92,7 +92,8 @@ class SpectralImage():
         G = normalize(aux_g).reshape(self.values.shape[:2])
         B = normalize(aux_b).reshape(self.values.shape[:2])
         RGB = np.dstack((R, G, B))
-        self._bgr_calculated = np.transpose(RGB, (1, 0, 2))
+        self._bgr_calculated = np.transpose(RGB, (1, 0, 2)).astype(np.float32)
+        print(self._bgr_calculated[0,0])
         return self._bgr_calculated
 
     def applyMask(self):pass

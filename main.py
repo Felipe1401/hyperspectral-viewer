@@ -87,7 +87,6 @@ class App(QMainWindow):
         if fname[0]:
             self.bilPath = fname[0]
             self.button1.setText("Archivo\n"+extract_filename(fname[0])+"\nseleccionado")
-            print(self.bilPath)
 
     def load_hdr(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', filter="Header files (*.hdr)")
