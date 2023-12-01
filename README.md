@@ -1,2 +1,2 @@
 # hyperspectral-viewer
-Hyperspectral image viewer using python
+Hyperspectral image viewer for Resonon's Pika L using python.
