@@ -28,9 +28,9 @@ $git clone https://github.com/Felipe1401/hyperspectral-viewer.git
 
 ### Archivos
 
-*Hyperspectral_image.py: Contiene la clase utilizada para manejar las imágenes hiperespectrales
-*main.py: Archivo principal con la interfáz gráfica y su lógica asociada.
-*variables.py: Contiene la lista de los valores de las longitudes de onda asociadas a cada canal.
+* Hyperspectral_image.py: Contiene la clase utilizada para manejar las imágenes hiperespectrales
+* main.py: Archivo principal con la interfáz gráfica y su lógica asociada.
+* variables.py: Contiene la lista de los valores de las longitudes de onda asociadas a cada canal.
 
 ### Ejecutar
 
