@@ -20,7 +20,7 @@ $pip install tkinter
 
 ### Instalación
 
-Para instalar:
+Para instalar se debe ejecutar la siguiente línea:
 
 ```
 $git clone https://github.com/Felipe1401/hyperspectral-viewer.git
